@@ -1,0 +1,22 @@
+#cloud-config
+
+groups:
+  - ubuntu: [root,sys]
+  - admins
+
+users:
+  - default
+  - name: userx
+    gecos: userx
+    shell: /bin/bash
+    primary_group: admins
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    lock_passwd: false
+
+packages:
+  - git    
+
+runcmd:
+  - sudo su userx
+  
